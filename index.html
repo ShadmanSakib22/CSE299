@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nsu-Connect</title>
+    <link rel="stylesheet" href="bootstrap5/css/bootstrap.css">
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+    <link href="bootstrap5/custom/dashboard.css" rel="stylesheet">
+
+</head>
+
+
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">NSU🔗Connect</a>
+    <button class="navbar-toggler d-md-none collapsed" type="button" data-bs-toggle="collapse"
+        data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-nav">
+        <div class="nav-item text-nowrap">
+            <i class="nav-link px-3" href="#"> Connecting NSU students in between breaks! </i>
+        </div>
+    </div>
+    <div class="navbar-nav">
+        <div class="nav-item text-nowrap">
+            <a class="nav-link px-3" href="#">Sign out</a>
+        </div>
+    </div>
+
+</header>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                <div class="position-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">
+                                Home
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="login.html">
+                                Login
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="register.html">
+
+                                Register
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                Find Match
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                Public Chatroom
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                Room Database
+                            </a>
+                        </li>
+                    </ul>
+
+                    <h6
+                        class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                        <span>User:</span>
+                    </h6>
+                    <ul class="nav flex-column mb-2">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                Inbox
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                Settings
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                Help
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">NSU🔗Connect</h1>
+                </div>
+
+
+                <div class="col-sm-12">
+                    <h5>A website-based platform to facilitate student interactions during breaks,</h5>
+                    <h6>September 18, 2023<br></h6>
+
+                    <div class="border p-3">
+                        <img class="img-fluid" src="images/1.jpg" alt="NSU Campus" style="width: 100%">
+                    </div>
+
+                    <p><br>
+                        Welcome to NSU Connect, your gateway to a more vibrant campus life at NSU! We understand that
+                        idle time gaps between classes can be isolating, leaving you craving meaningful connections with
+                        your fellow
+                        students. That's why we've created NSU Connect, a dynamic platform designed to foster
+                        camaraderie and engagement among our NSU
+                        community.
+                        <br>
+                    <ul>
+                        <li><i>
+                                To begin accessing NSU-Connect, Register your account with your designated
+                                NSU
+                                Email address.
+                                Afterwards, log in to your account and head on to the Public Chatroom or Find Match to
+                                connect
+                                with your NSU peers!</i>
+                        </li>
+                    </ul>
+                    </p>
+                    <br>
+                    <h6>Let's connect and make memories together!</h6>
+                    <div style="padding-bottom: 5%;"></div>
+                </div>
+            </main>
+        </div>
+    </div>
+    </div>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+        import { getDatabase, set, ref, update } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAyC2WIFmNrIn3p4jmcmXNCXOz5Y6a5Pbo",
+            authDomain: "nsuconnect.firebaseapp.com",
+            databaseURL: "https://nsuconnect-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "nsuconnect",
+            storageBucket: "nsuconnect.appspot.com",
+            messagingSenderId: "889898728794",
+            appId: "1:889898728794:web:a0d51d30aefbe2c2e3c763"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+        const auth = getAuth(app);
+
+        //manage user state
+        const user = auth.currentUser;
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // User is signed in, see docs for a list of available properties
+                // https://firebase.google.com/docs/reference/js/auth.user
+                const uid = user.uid;
+                // ...
+            } else {
+                // User is signed out
+                // ...
+            }
+        });
+
+        // Set up our Logout function
+        logOut.addEventListener('click', (e) => {
+            signOut(auth).then(() => {
+                alert('Sign-out successful');
+            }).catch((error) => {
+                alert('Error Logging out! Try Again Later...')
+            });
+
+        });
+
+    </script>
+
+</body>
+
+
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="bootstrap5/js/bootstrap.bundle.js"></script>
+<script src="bootstrap5/custom/dashboard.js"></script>
+
+</html>

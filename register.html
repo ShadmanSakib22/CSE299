@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nsu-Connect</title>
+  <link rel="stylesheet" href="bootstrap5/css/bootstrap.css">
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+  <link href="bootstrap5/custom/dashboard.css" rel="stylesheet">
+
+</head>
+
+
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="index.html">NSU🔗Connect</a>
+
+  <div class="navbar-nav">
+    <div class="nav-item text-nowrap">
+      <i class="nav-link px-3" href="#"> Connecting NSU students in between breaks! </i>
+    </div>
+  </div>
+  <div class="navbar-nav">
+    <div class="nav-item text-nowrap">
+      <a class="nav-link px-3" href="#">Sign out</a>
+    </div>
+  </div>
+
+</header>
+
+<body>
+  <section class="vh-100" style="background-color: #FFFFF0;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-xl-6">
+          <div class="card" style="border-radius: 1rem;">
+            <div class="row g-0">
+              <div class="align-items-center">
+                <div class="card-body p-4 pb-0 text-black">
+
+                  <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Register your account</h5>
+
+                  <div class="form-outline mb-4">
+                    <input type="text" class="form-control" id="fullname" required>
+                    <label class="form-label" for="fullname">Full Name</label>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <input type="text" class="form-control" id="email" required>
+                    <label class="form-label" for="email">Email Address</label>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <input type="password" class="form-control" id="password" required>
+                    <label class="form-label" for="password">Password</label>
+                  </div>
+
+                  <div class="pt-1 mb-3">
+                    <input type="submit" id='signUp' name="signup_submit" value="Sign Up"
+                      class="btn btn-dark btn-lg btn-block">
+                  </div>
+
+                  <p class="mb-3 " style="color: #393f81;">Already have an account? <a href="login.html"
+                      style="color: #393f81;">Login here</a></p>
+                  <a href="#!" class="small text-muted">Terms of use.</a>
+                  <a href="#!" class="small text-muted">Privacy policy</a>
+
+                  <div class="mb-3"></div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+    import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyAyC2WIFmNrIn3p4jmcmXNCXOz5Y6a5Pbo",
+      authDomain: "nsuconnect.firebaseapp.com",
+      databaseURL: "https://nsuconnect-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "nsuconnect",
+      storageBucket: "nsuconnect.appspot.com",
+      messagingSenderId: "889898728794",
+      appId: "1:889898728794:web:a0d51d30aefbe2c2e3c763"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+    const auth = getAuth(app);
+
+    // Set up our register function
+    signUp.addEventListener('click', (e) => {
+
+      // Get all our input fields
+      var fullname = document.getElementById('fullname').value
+      var email = document.getElementById('email').value
+      var password = document.getElementById('password').value
+
+
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          // Signed in 
+          const user = userCredential.user;
+          set(ref(database, 'users/' + user.uid), {
+            fullname: fullname,
+            email: email
+
+          })
+
+          alert('user created!');
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          alert(errorMessage);
+          // ..
+        });
+
+    });
+
+  </script>
+
+
+
+  <script src="https://unpkg.com/@popperjs/core@2"></script>
+  <script src="bootstrap5/js/bootstrap.bundle.js"></script>
+  <script src="bootstrap5/custom/dashboard.js"></script>
+
+</body>
+
+</html>
