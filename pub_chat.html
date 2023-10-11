@@ -16,6 +16,41 @@
             user-select: none;
         }
 
+        .sent-message .username {
+            color: #007bff;
+
+            /* Orange color for sender's username */
+        }
+
+        .received-message .username {
+            color: #fd7e14;
+            /* Blue color for recipient's username */
+        }
+
+        .message-text {
+            /* Style for the message text (can be the same for sent and received messages) */
+            color: white;
+            /* Default color for the message text */
+        }
+
+        #messages {
+            list-style: none;
+            /* Remove default list styles */
+            padding: 0;
+            /* Remove default padding */
+        }
+
+        #chat {
+            background-color: #343a40;
+            /* Dark background color */
+            border-radius: 10px;
+            height: 400px;
+            padding: 20px;
+            text-align: left;
+            color: white;
+
+        }
+
         @media (min-width: 768px) {
             .bd-placeholder-img-lg {
                 font-size: 3.5rem;
@@ -40,13 +75,15 @@
     </div>
     <div class="navbar-nav">
         <div class="nav-item text-nowrap">
-            <a class="nav-link px-3" href="login.html">Login</a>
+            <button id="signOutButton" class="btn btn-dark">Sign out</button>
         </div>
     </div>
 
 </header>
 
 <body>
+    <div id="userStatus"></div>
+
     <div class="container-fluid">
         <div class="row">
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
@@ -106,51 +143,59 @@
             </nav>
 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+
                 <div
                     class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">NSU🔗Connect</h1>
                 </div>
 
-
                 <div class="col-sm-12">
-                    <h5>A website-based platform to facilitate student interactions during breaks,</h5>
-                    <h6>September 18, 2023<br></h6>
+                    <h5>
+                        <div id="userWelcomeMessage"></div>
+                    </h5>
 
-                    <div class="border p-3">
-                        <img class="img-fluid" src="images/1.jpg" alt="NSU Campus" style="width: 100%">
+                    <div class="row"> <!-- Start of row -->
+                        <div class="col-md-10"> <!-- Chatbox column -->
+                            <div id="chat" style="overflow-y: scroll; max-height: 400px;">
+                                <!-- messages will display here -->
+                                <ul id="messages"></ul>
+
+                                <!-- form to send message -->
+                                <form id="message-form" class="row g-2">
+                                    <div class="col-md-9">
+                                        <input id="message-input" type="text" class="form-control h-100" />
+                                    </div>
+                                    <div class="col-md-3"> <!-- Adjusted button column width -->
+                                        <button id="message-btn" type="submit"
+                                            class="btn btn-primary btn-sm h-100">Send</button>
+                                    </div>
+                                </form>
+                                <div id="bottom"></div>
+                            </div>
+                        </div> <!-- End of chatbox column -->
+
                     </div>
-
-                    <p><br>
-                        Welcome to NSU Connect, your gateway to a more vibrant campus life at NSU! We understand that
-                        idle time gaps between classes can be isolating, leaving you craving meaningful connections with
-                        your fellow
-                        students. That's why we've created NSU Connect, a dynamic platform designed to foster
-                        camaraderie and engagement among our NSU
-                        community.
-                        <br>
-                    <ul>
-                        <li><i>
-                                To begin accessing NSU-Connect, Register your account with your designated
-                                NSU
-                                Email address.
-                                Afterwards, log in to your account and head on to the Public Chatroom or Find Match to
-                                connect
-                                with your NSU peers!</i>
-                        </li>
-                    </ul>
-                    </p>
-                    <br>
-                    <h6>Let's connect and make memories together!</h6>
-                    <div style="padding-bottom: 5%;"></div>
-                </div>
             </main>
+
         </div>
     </div>
     </div>
 
+
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+             https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
+
+
+    <script src="config.js" type="module"></script>
+    <script src="pub_chat.js"></script>
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="bootstrap5/js/bootstrap.bundle.js"></script>
     <script src="bootstrap5/custom/dashboard.js"></script>
+
 
 </body>
 

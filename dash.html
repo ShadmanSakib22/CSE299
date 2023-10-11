@@ -40,13 +40,15 @@
     </div>
     <div class="navbar-nav">
         <div class="nav-item text-nowrap">
-            <a class="nav-link px-3" href="login.html">Login</a>
+            <button id="signOutButton" class="btn btn-dark">Sign out</button>
         </div>
     </div>
 
 </header>
 
 <body>
+    <div id="userStatus"></div>
+
     <div class="container-fluid">
         <div class="row">
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
@@ -105,52 +107,52 @@
                 </div>
             </nav>
 
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <div
-                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">NSU🔗Connect</h1>
-                </div>
-
-
-                <div class="col-sm-12">
-                    <h5>A website-based platform to facilitate student interactions during breaks,</h5>
-                    <h6>September 18, 2023<br></h6>
-
-                    <div class="border p-3">
-                        <img class="img-fluid" src="images/1.jpg" alt="NSU Campus" style="width: 100%">
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 d-flex justify-content-center align-items-center">
+                <div class="text-center">
+                    <div
+                        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                        <h1 class="h2">NSU🔗Connect</h1>
                     </div>
 
-                    <p><br>
-                        Welcome to NSU Connect, your gateway to a more vibrant campus life at NSU! We understand that
-                        idle time gaps between classes can be isolating, leaving you craving meaningful connections with
-                        your fellow
-                        students. That's why we've created NSU Connect, a dynamic platform designed to foster
-                        camaraderie and engagement among our NSU
-                        community.
+                    <div class="col-sm-12">
+                        <h5>
+                            <div id="userWelcomeMessage"></div>
+                        </h5>
+                        <h6 id="currentDate">Date: <br></h6>
                         <br>
-                    <ul>
-                        <li><i>
-                                To begin accessing NSU-Connect, Register your account with your designated
-                                NSU
-                                Email address.
-                                Afterwards, log in to your account and head on to the Public Chatroom or Find Match to
-                                connect
-                                with your NSU peers!</i>
-                        </li>
-                    </ul>
-                    </p>
-                    <br>
-                    <h6>Let's connect and make memories together!</h6>
-                    <div style="padding-bottom: 5%;"></div>
+                        <div class="pt-1 mb-3">
+                            <a class="btn btn-dark btn-lg btn-block" href="match.html">Get A Match</a>
+                        </div>
+                        <br>
+                        <div class="pt-1 mb-3">
+                            <a class="btn btn-dark btn-lg btn-block" href="pub_chat.html">Enter Public Chatroom</a>
+                        </div>
+
+                        <div style="padding-bottom: 5%;"></div>
+                    </div>
                 </div>
+
+                <script>
+                    // Get the current date
+                    const currentDate = new Date();
+
+                    // Format the date (day-month-year)
+                    const formattedDate = `Date: ${currentDate.toLocaleDateString()}`;
+
+                    // Update the content of the <h6> element with the current date
+                    document.getElementById('currentDate').textContent = formattedDate;
+                </script>
             </main>
+
         </div>
     </div>
     </div>
 
+    <script src="config.js" type="module"></script>
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="bootstrap5/js/bootstrap.bundle.js"></script>
     <script src="bootstrap5/custom/dashboard.js"></script>
+
 
 </body>
 
