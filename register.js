@@ -1,55 +1,79 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
-import { getDatabase, set, ref, update } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyAyC2WIFmNrIn3p4jmcmXNCXOz5Y6a5Pbo",
-    authDomain: "nsuconnect.firebaseapp.com",
-    databaseURL: "https://nsuconnect-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "nsuconnect",
-    storageBucket: "nsuconnect.appspot.com",
-    messagingSenderId: "889898728794",
-    appId: "1:889898728794:web:a0d51d30aefbe2c2e3c763"
+  apiKey: "AIzaSyAyC2WIFmNrIn3p4jmcmXNCXOz5Y6a5Pbo",
+  authDomain: "nsuconnect.firebaseapp.com",
+  databaseURL: "https://nsuconnect-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "nsuconnect",
+  storageBucket: "nsuconnect.appspot.com",
+  messagingSenderId: "889898728794",
+  appId: "1:889898728794:web:e56b5592b25051aee3c763"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+// Initialize variables
+const auth = firebase.auth()
+const database = firebase.database()
+
+async function register() {
+  // Get all our input fields
+  var email = document.getElementById('email').value;
+  var password = document.getElementById('password').value;
+  var full_name = document.getElementById('full_name').value;
+
+  // Validate input fields
+  if (validate_email(email) === false || validate_password(password) === false) {
+    alert('Email or Password Input Error!');
+    return;
+  }
+
+  try {
+    // Create user in Firebase Authentication
+    var userCredential = await auth.createUserWithEmailAndPassword(email, password);
+
+    // Get the current user
+    var user = userCredential.user;
+
+    // Add user data to Firebase Database
+    var database_ref = database.ref('users/' + user.uid);
+    var user_data = {
+      email: email,
+      full_name: full_name,
+      login_status: 'offline'
     };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
-const auth = getAuth(app);
-        
-// Set up our register function
-signUp.addEventListener('click', (e) => {
+    await database_ref.set(user_data); // Wait for the database update to complete
 
-// Get all our input fields
-var fullname = document.getElementById('fullname').value
-var email = document.getElementById('email').value
-var password = document.getElementById('password').value
+    // User creation and database update successful
+    alert('User Created!!');
 
-createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-    // Signed in 
-     const user = userCredential.user;
-        set(ref(database, 'users/' + user.uid), {
-        fullname: fullname,
-        email: email
+    // Redirect to dash.html
+    window.location.href = 'login.html';
+  } catch (error) {
+    // Handle errors
+    var error_code = error.code;
+    var error_message = error.message;
+    alert(error_message);
+  }
+}
 
-        })
+// Validate Functions
+function validate_email(email) {
+  expression = /^[^@]+@\w+(\.\w+)+\w$/
+  if (expression.test(email) == true) {
+    // Email is good
+    return true
+  } else {
+    // Email is not good
+    return false
+  }
+}
 
-        // Alert and redirect to login.html
-        alert('User created! Redirecting to login page...');
-        window.location.href = 'login.html';
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          alert(errorMessage);
-          // ..
-        });
+function validate_password(password) {
+  // Firebase only accepts lengths greater than 6
+  if (password < 6) {
+    return false
+  } else {
+    return true
+  }
+}
 
-    });
-    
 

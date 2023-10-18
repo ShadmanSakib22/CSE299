@@ -18,18 +18,20 @@
 
         .sent-message .username {
             color: #007bff;
+            font-weight: bold;
 
             /* Orange color for sender's username */
         }
 
         .received-message .username {
             color: #fd7e14;
+            font-weight: bold;
             /* Blue color for recipient's username */
         }
 
         .message-text {
             /* Style for the message text (can be the same for sent and received messages) */
-            color: white;
+            color: black;
             /* Default color for the message text */
         }
 
@@ -41,15 +43,32 @@
         }
 
         #chat {
-            background-color: #343a40;
-            /* Dark background color */
+            background-color: rgba(245, 245, 245, 0.932);
             border-radius: 10px;
             height: 400px;
             padding: 20px;
             text-align: left;
-            color: white;
-
+            color: black;
+            border: 2px solid black;
         }
+
+        #userlist {
+            background-color: rgba(245, 245, 245, 0.932);
+            border-radius: 10px;
+            padding-top: 5%;
+            height: 400px;
+            text-align: left;
+            color: rgba(21, 142, 116, 0.998);
+            border: 2px solid black;
+        }
+
+        #user_list li {
+            font-weight: bold;
+            border-bottom: 1px solid #ccc;
+            padding: 5px 0;
+        }
+
+
 
         @media (min-width: 768px) {
             .bd-placeholder-img-lg {
@@ -146,58 +165,70 @@
 
                 <div
                     class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">NSU🔗Connect</h1>
+                    <h1 class="h2">NSU🔗Connect - Public Chatroom</h1>
                 </div>
 
                 <div class="col-sm-12">
-                    <h5>
-                        <div id="userWelcomeMessage"></div>
-                    </h5>
+                    <h6>
+                        Hello, <span id="userWelcomeMessage"></span> - lets keep the Chat Clean!<br>
+                    </h6>
 
                     <div class="row"> <!-- Start of row -->
+
                         <div class="col-md-10"> <!-- Chatbox column -->
-                            <div id="chat" style="overflow-y: scroll; max-height: 400px;">
+                            <div id="bottom"></div>
+                            <div id="chat" style="overflow-y: scroll; max-height: 350px;">
                                 <!-- messages will display here -->
                                 <ul id="messages"></ul>
-
                                 <!-- form to send message -->
                                 <form id="message-form" class="row g-2">
                                     <div class="col-md-9">
                                         <input id="message-input" type="text" class="form-control h-100" />
                                     </div>
+
                                     <div class="col-md-3"> <!-- Adjusted button column width -->
                                         <button id="message-btn" type="submit"
                                             class="btn btn-primary btn-sm h-100">Send</button>
                                     </div>
                                 </form>
-                                <div id="bottom"></div>
                             </div>
                         </div> <!-- End of chatbox column -->
-
                     </div>
+                    <div class="mb-3"></div>
+                    <div class="row"> <!-- Start of row -->
+                        <h6>Online Users: </h6>
+                        <div class="col-md-3"> <!-- User column -->
+                            <div id="userlist" style="overflow-y: scroll; max-height: 350px;">
+                                <!-- user emails will display here -->
+                                <ol id="user_list"></ol>
+                            </div>
+                        </div> <!-- End of user column -->
+                    </div>
+
+                    <form id="whisper-form">
+                        <input type="email" id="whisper-recipient" placeholder="Recipient's Email" required>
+                        <input type="text" id="whisper-message" placeholder="Your message" required>
+                        <button type="submit">Send</button>
+                    </form>
+
             </main>
 
         </div>
+        <div style="padding-bottom: 5%;"></div>
     </div>
     </div>
-
-
-
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-             https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
-
-
-    <script src="config.js" type="module"></script>
-    <script src="pub_chat.js"></script>
-    <script src="https://unpkg.com/@popperjs/core@2"></script>
-    <script src="bootstrap5/js/bootstrap.bundle.js"></script>
-    <script src="bootstrap5/custom/dashboard.js"></script>
-
 
 </body>
 
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+<!-- https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+
+
+<script src="config.js"></script>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="bootstrap5/js/bootstrap.bundle.js"></script>
+<script src="bootstrap5/custom/dashboard.js"></script>
 
 </html>

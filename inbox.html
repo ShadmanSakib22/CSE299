@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nsu-Connect</title>
+    <link rel="stylesheet" href="bootstrap5/css/bootstrap.css">
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        .sent-message .username {
+            color: #007bff;
+            font-weight: bold;
+
+            /* Orange color for sender's username */
+        }
+
+        .received-message .username {
+            color: #fd7e14;
+            font-weight: bold;
+            /* Blue color for recipient's username */
+        }
+
+        .message-text {
+            /* Style for the message text (can be the same for sent and received messages) */
+            color: black;
+            /* Default color for the message text */
+        }
+
+        #messages {
+            list-style: none;
+            /* Remove default list styles */
+            padding: 0;
+            /* Remove default padding */
+        }
+
+        #chat {
+            background-color: rgba(245, 245, 245, 0.932);
+            /* Dark background color */
+            border-radius: 10px;
+            height: 400px;
+            padding: 20px;
+            text-align: left;
+            color: black;
+            border: 2px solid black;
+
+
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+    <link href="bootstrap5/custom/dashboard.css" rel="stylesheet">
+
+</head>
+
+
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="index.html">NSU🔗Connect</a>
+    <button class="navbar-toggler d-md-none collapsed" type="button" data-bs-toggle="collapse"
+        data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-nav">
+        <div class="nav-item text-nowrap">
+            <i class="nav-link px-3" href="#"> Connecting NSU students in between breaks! </i>
+        </div>
+    </div>
+    <div class="navbar-nav">
+        <div class="nav-item text-nowrap">
+            <button id="signOutButton" class="btn btn-dark">Sign out</button>
+        </div>
+    </div>
+
+</header>
+
+<body>
+    <div id="userStatus"></div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                <div class="position-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.html">
+                                Home
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="login.html">
+                                Login
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="register.html">
+
+                                Register
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="match.html">
+                                Find Match
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="pub_chat.html">
+                                Public Chatroom
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="room_data.html">
+                                Room Database
+                            </a>
+                        </li>
+                    </ul>
+
+                    <h6
+                        class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                        <span>User:</span>
+                    </h6>
+                    <ul class="nav flex-column mb-2">
+                        <li class="nav-item">
+                            <a class="nav-link" href="inbox.html">
+                                Inbox
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="help.html">
+                                Help
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">NSU🔗Connect - Inbox</h1>
+                </div>
+
+                <div class="col-sm-12">
+                    <h6>
+                        Hello, <span id="userWelcomeMessage"></span> - lets keep the Chat Clean!<br>
+                    </h6>
+
+
+            </main>
+
+        </div>
+        <div style="padding-bottom: 5%;"></div>
+    </div>
+    </div>
+
+</body>
+
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+<!-- https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+
+
+<script src="config.js"></script>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="bootstrap5/js/bootstrap.bundle.js"></script>
+<script src="bootstrap5/custom/dashboard.js"></script>
+
+</html>
