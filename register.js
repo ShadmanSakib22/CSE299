@@ -55,17 +55,19 @@ async function register() {
   }
 }
 
-// Validate Functions
 function validate_email(email) {
-  expression = /^[^@]+@\w+(\.\w+)+\w$/
-  if (expression.test(email) == true) {
-    // Email is good
-    return true
-  } else {
-    // Email is not good
-    return false
-  }
+    // Regular expression to validate email with domain @northsouth.edu
+    expression = /^[^@]+@northsouth\.edu$/
+    
+    if (expression.test(email) == true) {
+        // Email is from @northsouth.edu domain
+        return true;
+    } else {
+        // Email is not from @northsouth.edu domain
+        return false;
+    }
 }
+
 
 function validate_password(password) {
   // Firebase only accepts lengths greater than 6
