@@ -1,0 +1,13 @@
+{
+  "rules": {
+    ".read": true,
+    ".write": true,
+    "direct_messages": {
+      ".read": "auth != null",  
+      ".write": "auth != null", 
+      "$messageId": {
+        ".validate": "newData.child('sender').val() === auth.token.email || newData.child('recipient').val() === auth.token.email"
+      }
+    }
+  }
+}
