@@ -311,3 +311,63 @@ searchInput.addEventListener('input', function() {
         }
     });
 });
+
+
+// Handle Matching
+async function clearInterests() {
+    // Get the current user
+    var user = auth.currentUser;
+
+    // Add user data to Firebase Database
+    if (user) {
+        var database_ref = database.ref('users/' + user.uid);
+        var user_data = {
+            interests: null
+        };
+
+        await database_ref.update(user_data); // Wait for the database update to complete
+    }
+}
+
+
+async function pair() {
+    var activity = document.getElementById('activity').value;
+    var user = auth.currentUser;
+
+    if (user) {
+        // Update user's interests in the database
+        var database_ref = database.ref('users/' + user.uid);
+        var user_data = {
+            interests: activity
+        };
+
+        await database_ref.update(user_data); // Wait for the database update to complete
+
+        // Reference to your 'users' node in Firebase Realtime Database
+        var usersRef = firebase.database().ref('users');
+
+        // Clear previous results
+        document.getElementById('results').innerHTML = '';
+
+        // Query users with the specified activity in their interests and login_status set to 'online'
+        usersRef.orderByChild('interests').equalTo(activity).once('value', (snapshot) => {
+            snapshot.forEach((userSnapshot) => {
+                const user = userSnapshot.val();
+                const currentUserEmail = firebase.auth().currentUser.email;
+
+                // Check if the user is not the current user and has the specified activity
+                if (user.email !== currentUserEmail && user.interests === activity && user.login_status === 'online') {
+                    const resultsElement = document.createElement('li');
+                    resultsElement.textContent = user.email; // Display user email, you can customize this as needed
+
+                    // Append the matched user to the results list
+                    document.getElementById('results').appendChild(resultsElement);
+                }
+            });
+        });
+    } else {
+        alert('No User found');
+        // Handle Error
+        console.error('Error! Please try again later');
+    }
+}
