@@ -1,0 +1,182 @@
+{
+  "direct_messages": {
+    "-Nhqi8_zhaOTMLdAH-d1": {
+      "message": "thats my line",
+      "recipient": "tester3@gmail.com",
+      "sender": "tester2@gmail.com",
+      "timestamp": 1698503891391
+    },
+    "-Nhqkdv_7yYsvANU8gGb": {
+      "message": "henlo\nhow do u do",
+      "recipient": "tester3@gmail.com",
+      "sender": "tester2@gmail.com",
+      "timestamp": 1698504548281
+    },
+    "-NhqlAJV6tPtm-QDuwrg": {
+      "message": "yo?",
+      "recipient": "tester@gmail.com",
+      "sender": "tester2@gmail.com",
+      "timestamp": 1698504684903
+    },
+    "-NhqlEbDB-IgddsJZUOm": {
+      "message": "what up?",
+      "recipient": "tester2@gmail.com",
+      "sender": "tester@gmail.com",
+      "timestamp": 1698504702486
+    },
+    "-NhshQHn6t-zVZXuhNLU": {
+      "message": "hi bro",
+      "recipient": "tester2@gmail.com",
+      "sender": "shadmansakib21@northsouth.edu",
+      "timestamp": 1698537256173
+    },
+    "-Nhshdfe13nBwNFFKP56": {
+      "message": "gn bro",
+      "recipient": "shadmansakib21@northsouth.edu",
+      "sender": "tester2@gmail.com",
+      "timestamp": 1698537315112
+    }
+  },
+  "messages": {
+    "1697490710650": {
+      "message": "yo lets get it",
+      "timestamp": 1697490710650,
+      "username": "tester"
+    },
+    "1697490783763": {
+      "message": "huh it worked",
+      "timestamp": 1697490783763,
+      "username": "tester"
+    },
+    "1697491339611": {
+      "message": "hmm",
+      "timestamp": 1697491339611,
+      "username": "tester"
+    },
+    "1697494516040": {
+      "message": "online users working now",
+      "timestamp": 1697494516040,
+      "username": "tester2"
+    },
+    "1697494628888": {
+      "message": "online users is not realtime...",
+      "timestamp": 1697494628888,
+      "username": "tester2"
+    },
+    "1697494653512": {
+      "message": "yea working on it",
+      "timestamp": 1697494653512,
+      "username": "tester3"
+    },
+    "1697494688080": {
+      "message": "bottom func broke",
+      "timestamp": 1697494688080,
+      "username": "tester3"
+    },
+    "1697494830400": {
+      "message": "online users is now realtime",
+      "timestamp": 1697494830400,
+      "username": "tester3"
+    },
+    "1697495638671": {
+      "message": "test bottom",
+      "timestamp": 1697495638671,
+      "username": "tester3"
+    },
+    "1697495797353": {
+      "message": "test2",
+      "timestamp": 1697495797353,
+      "username": "tester3"
+    },
+    "1697495835127": {
+      "message": "test3",
+      "timestamp": 1697495835127,
+      "username": "tester2"
+    },
+    "1697495853863": {
+      "message": "test5",
+      "timestamp": 1697495853863,
+      "username": "tester3"
+    },
+    "1697495899871": {
+      "message": "test6",
+      "timestamp": 1697495899871,
+      "username": "tester3"
+    },
+    "1697495994215": {
+      "message": "test7",
+      "timestamp": 1697495994215,
+      "username": "tester3"
+    },
+    "1697496038927": {
+      "message": "tes8",
+      "timestamp": 1697496038927,
+      "username": "tester3"
+    },
+    "1697496073439": {
+      "message": "working?",
+      "timestamp": 1697496073439,
+      "username": "tester3"
+    },
+    "1697496082007": {
+      "message": "sort of",
+      "timestamp": 1697496082007,
+      "username": "tester3"
+    },
+    "1698494631754": {
+      "message": "testing",
+      "timestamp": 1698494631754,
+      "username": "tester3"
+    },
+    "1698494643138": {
+      "message": "hello",
+      "timestamp": 1698494643138,
+      "username": "tester3"
+    },
+    "1698503211047": {
+      "message": "hello",
+      "timestamp": 1698503211047,
+      "username": "tester"
+    },
+    "1698503789952": {
+      "message": "3",
+      "timestamp": 1698503789952,
+      "username": "tester"
+    },
+    "1698503794375": {
+      "message": "2",
+      "timestamp": 1698503794375,
+      "username": "tester2"
+    },
+    "1698507473456": {
+      "message": "hi",
+      "timestamp": 1698507473456,
+      "username": "shadmansakib21"
+    }
+  },
+  "users": {
+    "Lnsc8wyEK9gfKHxHYwtOM0ijCLA3": {
+      "email": "tester@gmail.com",
+      "full_name": "Shadman Sakib2",
+      "interests": "study_math",
+      "login_status": "online",
+      "staff": "yes"
+    },
+    "RwKQBYZJJ9RNHd72OgpCMBKYokF2": {
+      "email": "shadmansakib21@northsouth.edu",
+      "full_name": "Shadman Sakib",
+      "interests": "study_math",
+      "login_status": "online"
+    },
+    "ganW7fKNIQPK6Crjd65HrOl6vrL2": {
+      "email": "tester3@gmail.com",
+      "full_name": "Shadman Sakib3",
+      "login_status": "online"
+    },
+    "xnxycI8KIDPGGisLLSAlM1nX9em2": {
+      "email": "tester2@gmail.com",
+      "full_name": "Shadman Sakib3",
+      "login_status": "online"
+    }
+  }
+}
